@@ -25,6 +25,7 @@
 conda create -n no.1-classifier python=3.11 -y
 conda activate no.1-classifier
 pip install -r requirements.txt
+# pip list --format=freeze > requirements.txt
 ```
 
 ### 2. 配置 Oracle OCI
