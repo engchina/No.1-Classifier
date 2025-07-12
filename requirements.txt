@@ -1,0 +1,6 @@
+flask
+oci
+numpy
+scikit-learn
+joblib
+python-dotenv

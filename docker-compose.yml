@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  oracle-cohere-classifier:
+    build: .
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      - ~/.oci:/home/appuser/.oci:ro  # 挂载 OCI 配置
+      - ./models:/app/models  # 持久化模型文件
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:5000/health', timeout=10)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # 可选：使用 nginx 作为反向代理
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - oracle-cohere-classifier
+    restart: unless-stopped
+    profiles:
+      - production
