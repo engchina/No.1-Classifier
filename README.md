@@ -53,7 +53,6 @@ cp .env.example .env
 ```bash
 # Oracle OCI 配置
 OCI_COMPARTMENT_ID=ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-OCI_ENDPOINT_ID=ocid1.generativeaiendpoint.oc1.us-chicago-1.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  # 可选
 ```
 
 ### 3. 运行应用

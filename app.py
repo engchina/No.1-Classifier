@@ -40,7 +40,8 @@ def train_classifier(texts, labels):
             serving_mode=oci.generative_ai_inference.models.OnDemandServingMode(
                 model_id="cohere.embed-v4.0"
             ),
-            truncate="END"
+            truncate="END",
+            input_type="CLASSIFICATION"
         )
         
         embed_text_response = generative_ai_inference_client.embed_text(embed_text_detail)
@@ -65,7 +66,8 @@ def get_text_embedding(text):
             serving_mode=oci.generative_ai_inference.models.OnDemandServingMode(
                 model_id="cohere.embed-v4.0"
             ),
-            truncate="END"
+            truncate="END",
+            input_type="CLASSIFICATION"
         )
         
         embed_text_response = generative_ai_inference_client.embed_text(embed_text_detail)
